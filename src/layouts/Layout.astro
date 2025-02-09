@@ -1,0 +1,47 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Futuristic Landing Page" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link href="https://api.fontshare.com/v2/css?f[]=polygrapher@400&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--color-primary: #201A3F;
+		--color-secondary: #21142E;
+		--color-accent: #6E4BFF;
+		--color-text: #FFFFFF;
+	}
+	html {
+		font-family: 'Space Grotesk', sans-serif;
+		background: var(--color-primary);
+		color: var(--color-text);
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		min-height: 100vh;
+		overflow-x: hidden;
+	}
+	.polygrapher {
+		font-family: 'Polygrapher', sans-serif;
+	}
+</style>
