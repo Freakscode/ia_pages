@@ -1,149 +1,89 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+const categories = [
+  {
+    title: "Creación Y Edición De Imágenes",
+    body: "Imagen Y Fotografía",
+    href: "/categories/image-editing",
+    icon: "🖼️",
+    cardClass: "color-1"
+  },
+  {
+    title: "Animación",
+    body: "Animación Digital y Motion Graphics",
+    href: "/categories/animation",
+    icon: "🎬",
+    cardClass: "color-2"
+  },
+  {
+    title: "Video Y Edición",
+    body: "Edición y Producción de Videos",
+    href: "/categories/video-editing",
+    icon: "🎥",
+    cardClass: "color-3"
+  },
+  {
+    title: "Audio Y Música",
+    body: "Producción y Edición de Audio",
+    href: "/categories/audio-music",
+    icon: "🎵",
+    cardClass: "color-4"
+  },
+  {
+    title: "Diseño Gráfico",
+    body: "Diseño Visual y Branding",
+    href: "/categories/graphic-design",
+    icon: "🎨",
+    cardClass: "color-5"
+  },
+  {
+    title: "Texto E Investigación",
+    body: "Contenido y Análisis",
+    href: "/categories/text-research",
+    icon: "📝",
+    cardClass: "color-6"
+  },
+  {
+    title: "Mercado Y Análisis",
+    body: "Investigación y Estrategia",
+    href: "/categories/market-analysis",
+    icon: "📊",
+    cardClass: "color-7"
+  },
+  {
+    title: "Tareas Multipropósito",
+    body: "Herramientas Versátiles",
+    href: "/categories/multipurpose",
+    icon: "🔧",
+    cardClass: "color-8"
+  }
+];
 ---
-
 <Layout title="Futuristic Landing">
-	<main>
-		<nav>
-			<div class="logo polygrapher">FUTURISM</div>
-			<div class="nav-links">
-				<a href="#about">About</a>
-				<a href="#features">Features</a>
-				<a href="#contact">Contact</a>
-				<button class="cta-button">Get Started</button>
-			</div>
-		</nav>
+  <main>
+    <nav>
+      <div class="logo polygrapher">FUTURISM</div>
+      <div class="nav-links">
+        <button class="cta-button">Get Started</button>
+      </div>
+    </nav>
 
-		<section class="hero">
-			<div class="hero-content">
-				<h1 class="polygrapher">DISCOVER THE FUTURE</h1>
-				<p>Experience the next generation of digital innovation</p>
-				<div class="hero-stats">
-					<div class="stat">
-						<span class="number">27K+</span>
-						<span class="label">Users</span>
-					</div>
-					<div class="stat">
-						<span class="number">876K+</span>
-						<span class="label">Downloads</span>
-					</div>
-					<div class="stat">
-						<span class="number">20K+</span>
-						<span class="label">Reviews</span>
-					</div>
-				</div>
-				<button class="primary-button">Explore Now</button>
-			</div>
-			<div class="hero-image">
-				<div class="glow-circle"></div>
-			</div>
-		</section>
-
-		<section class="categories" id="categories">
-			<div class="categories-header">
-				<h2 class="polygrapher">EXPLORE OUR CATEGORIES</h2>
-				<p class="categories-subtitle">Discover our comprehensive suite of creative tools and services</p>
-			</div>
-			<div class="categories-grid">
-				<div class="category-card card-1">
-					<div class="category-content">
-						<div class="category-icon">🖼️</div>
-						<div class="category-text">
-							<h3>Creación Y Edición De Imágenes</h3>
-							<p>Imagen Y Fotografía</p>
-						</div>
-					</div>
-					<div class="category-hover">
-						<span class="learn-more">Explorar →</span>
-					</div>
-				</div>
-				<div class="category-card card-2">
-					<div class="category-content">
-						<div class="category-icon">🎬</div>
-						<div class="category-text">
-							<h3>Animación</h3>
-							<p>Animación Digital y Motion Graphics</p>
-						</div>
-					</div>
-					<div class="category-hover">
-						<span class="learn-more">Explorar →</span>
-					</div>
-				</div>
-				<div class="category-card card-3">
-					<div class="category-content">
-						<div class="category-icon">🎥</div>
-						<div class="category-text">
-							<h3>Video Y Edición</h3>
-							<p>Edición y Producción de Videos</p>
-						</div>
-					</div>
-					<div class="category-hover">
-						<span class="learn-more">Explorar →</span>
-					</div>
-				</div>
-				<div class="category-card card-4">
-					<div class="category-content">
-						<div class="category-icon">🎵</div>
-						<div class="category-text">
-							<h3>Audio Y Música</h3>
-							<p>Producción y Edición de Audio</p>
-						</div>
-					</div>
-					<div class="category-hover">
-						<span class="learn-more">Explorar →</span>
-					</div>
-				</div>
-				<div class="category-card card-5">
-					<div class="category-content">
-						<div class="category-icon">🎨</div>
-						<div class="category-text">
-							<h3>Diseño Gráfico</h3>
-							<p>Diseño Visual y Branding</p>
-						</div>
-					</div>
-					<div class="category-hover">
-						<span class="learn-more">Explorar →</span>
-					</div>
-				</div>
-				<div class="category-card card-6">
-					<div class="category-content">
-						<div class="category-icon">📝</div>
-						<div class="category-text">
-							<h3>Texto E Investigación</h3>
-							<p>Contenido y Análisis</p>
-						</div>
-					</div>
-					<div class="category-hover">
-						<span class="learn-more">Explorar →</span>
-					</div>
-				</div>
-				<div class="category-card card-7">
-					<div class="category-content">
-						<div class="category-icon">📊</div>
-						<div class="category-text">
-							<h3>Mercado Y Análisis</h3>
-							<p>Investigación y Estrategia</p>
-						</div>
-					</div>
-					<div class="category-hover">
-						<span class="learn-more">Explorar →</span>
-					</div>
-				</div>
-				<div class="category-card card-8">
-					<div class="category-content">
-						<div class="category-icon">🔄</div>
-						<div class="category-text">
-							<h3>Tareas Multipropósito</h3>
-							<p>Soluciones Versátiles</p>
-						</div>
-					</div>
-					<div class="category-hover">
-						<span class="learn-more">Explorar →</span>
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
+    <section class="categories" id="categories">
+      <div class="categories-grid">
+        {categories.map((category) => (
+          <Card
+            title={category.title}
+            body={category.body}
+            href={category.href}
+            icon={category.icon}
+            cardClass={category.cardClass}
+          />
+        ))}
+      </div>
+    </section>
+  </main>
 </Layout>
 
 <style>
@@ -395,86 +335,6 @@ import Layout from '../layouts/Layout.astro';
 		font-size: 0.9rem;
 		color: rgba(255, 255, 255, 0.6);
 		margin: 0;
-	}
-
-	.card-1 {
-		border: 2px solid #EAAA17;
-	}
-	.card-1:hover {
-		background: rgba(234, 170, 23, 0.1);
-	}
-	.card-1 .learn-more {
-		color: #EAAA17;
-	}
-
-	.card-2 {
-		border: 2px solid #E53223;
-	}
-	.card-2:hover {
-		background: rgba(229, 50, 35, 0.1);
-	}
-	.card-2 .learn-more {
-		color: #E53223;
-	}
-
-	.card-3 {
-		border: 2px solid #E3DE00;
-	}
-	.card-3:hover {
-		background: rgba(227, 222, 0, 0.1);
-	}
-	.card-3 .learn-more {
-		color: #E3DE00;
-	}
-
-	.card-4 {
-		border: 2px solid #951762;
-	}
-	.card-4:hover {
-		background: rgba(149, 23, 98, 0.1);
-	}
-	.card-4 .learn-more {
-		color: #951762;
-	}
-
-	.card-5 {
-		border: 2px solid #3CE5A8;
-	}
-	.card-5:hover {
-		background: rgba(60, 229, 168, 0.1);
-	}
-	.card-5 .learn-more {
-		color: #3CE5A8;
-	}
-
-	.card-6 {
-		border: 2px solid #50D350;
-	}
-	.card-6:hover {
-		background: rgba(80, 211, 80, 0.1);
-	}
-	.card-6 .learn-more {
-		color: #50D350;
-	}
-
-	.card-7 {
-		border: 2px solid #15616E;
-	}
-	.card-7:hover {
-		background: rgba(21, 97, 110, 0.1);
-	}
-	.card-7 .learn-more {
-		color: #15616E;
-	}
-
-	.card-8 {
-		border: 2px solid #6E4BFF;
-	}
-	.card-8:hover {
-		background: rgba(110, 75, 255, 0.1);
-	}
-	.card-8 .learn-more {
-		color: #6E4BFF;
 	}
 
 	@media (max-width: 1200px) {

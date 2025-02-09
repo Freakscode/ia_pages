@@ -1,0 +1,143 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const tools = [
+    {
+        name: "Midjourney",
+        description: "IA para generación de imágenes",
+        url: "#",
+        icon: "🎨"
+    },
+    {
+        name: "DALL-E",
+        description: "Creación de imágenes con IA",
+        url: "#",
+        icon: "🖼️"
+    }
+];
+---
+
+<Layout title="Creación Y Edición De Imágenes">
+    <main>
+        <nav class="category-nav">
+            <a href="/" class="back-button">
+                <span class="back-icon">←</span>
+                <span class="back-text">Inicio</span>
+            </a>
+            <h1>Creación Y Edición De Imágenes</h1>
+        </nav>
+
+        <div class="category-content">
+            <div class="tools-grid">
+                {tools.map(tool => (
+                    <div class="tool-card">
+                        <div class="tool-icon">{tool.icon}</div>
+                        <h3>{tool.name}</h3>
+                        <p>{tool.description}</p>
+                        <a href={tool.url} class="tool-link">Explorar →</a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    main {
+        min-height: 100vh;
+        background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+        padding-top: 80px;
+    }
+
+    .category-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem 2rem;
+        background: rgba(32, 26, 63, 0.8);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        z-index: 100;
+    }
+
+    .back-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
+    }
+
+    .category-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .category-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin: 1rem 0;
+        background: linear-gradient(135deg, #fff, #6E4BFF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .tool-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .tool-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .tool-icon {
+        font-size: 2.5rem;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .tool-link {
+        display: inline-block;
+        margin-top: 1rem;
+        color: var(--color-accent);
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+        .tools-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
