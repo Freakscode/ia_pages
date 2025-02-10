@@ -1,13 +1,13 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import HeaderCarousel from '../../components/HeaderCarousel.astro';
-import AppCard from '../../components/AppCard.astro';
-import { imageEditingTools } from '../../data/imageEditingTools';
+import Layout from "../../layouts/Layout.astro";
+import HeaderCarousel from "../../components/HeaderCarousel.astro";
+import AppCard from "../../components/AppCard.astro";
+import { imageEditingTools } from "../../data/imageEditingTools";
 
-const validTools = imageEditingTools.map(tool => ({
+const validTools = imageEditingTools.map((tool) => ({
     ...tool,
     description: tool.description || `Descubre ${tool.name}`,
-    logo: tool.logo || ''
+    logo: tool.logo || "",
 }));
 ---
 
@@ -17,7 +17,11 @@ const validTools = imageEditingTools.map(tool => ({
             <div class="nav-content">
                 <div class="nav-left">
                     <a href="/ia_pages/" class="back-button">
-                        <img src="/ia_pages/logos/logo.png" alt="Logo" class="nav-logo" />
+                        <img
+                            src="/ia_pages/logos/logo.png"
+                            alt="Logo"
+                            class="nav-logo"
+                        />
                         <div class="back-text-container">
                             <span class="back-icon">←</span>
                             <span class="back-text">Inicio</span>
@@ -35,14 +39,19 @@ const validTools = imageEditingTools.map(tool => ({
 
         <div class="category-content">
             <div class="tools-grid">
-                {imageEditingTools.map(tool => (
-                    <AppCard 
-                        name={tool.name}
-                        url={tool.url}
-                        logo={tool.logo}
-                        description={tool.description || `Descubre la herramienta ${tool.name}`}
-                    />
-                ))}
+                {
+                    imageEditingTools.map((tool) => (
+                        <AppCard
+                            name={tool.name}
+                            url={tool.url}
+                            logo={tool.logo}
+                            description={
+                                tool.description ||
+                                `Descubre la herramienta ${tool.name}`
+                            }
+                        />
+                    ))
+                }
             </div>
         </div>
     </main>
@@ -51,10 +60,12 @@ const validTools = imageEditingTools.map(tool => ({
 <style>
     main {
         min-height: 100vh;
-        background: linear-gradient(135deg, 
-            rgba(26, 27, 38, 0.65), 
-            rgba(35, 36, 51, 0.65)
-        ), url('/images/background2.png');
+        background: linear-gradient(
+                135deg,
+                rgba(26, 27, 38, 0.65),
+                rgba(35, 36, 51, 0.65)
+            ),
+            url("/images/background2.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -143,7 +154,7 @@ const validTools = imageEditingTools.map(tool => ({
     h1 {
         font-size: 2rem;
         margin: 0;
-        background: linear-gradient(135deg, #fff, #6E4BFF);
+        background: linear-gradient(135deg, #fff, #6e4bff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-shadow: 0 2px 10px rgba(110, 75, 255, 0.2);

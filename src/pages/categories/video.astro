@@ -1,48 +1,36 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import HeaderCarousel from '../../components/HeaderCarousel.astro';
-import AppCard from '../../components/AppCard.astro';
-import { videoTools, categoryDescription } from '../../data/videoTools';
+import Layout from "../../layouts/Layout.astro";
+import HeaderCarousel from "../../components/HeaderCarousel.astro";
+import AppCard from "../../components/AppCard.astro";
+import { videoTools, categoryDescription } from "../../data/videoTools";
+import CategoryNav from "../../components/CategoryNav.astro";
 
 // Movemos la lógica aquí dentro del frontmatter
-const validTools = videoTools.map(tool => ({
+const validTools = videoTools.map((tool) => ({
     ...tool,
     description: tool.description || `Descubre ${tool.name}`,
-    logo: tool.logo || ''
+    logo: tool.logo || "",
 }));
 ---
 
 <Layout title={categoryDescription.title}>
     <main>
-        <nav class="category-nav">
-            <div class="nav-content">
-                <div class="nav-left">
-                    <a href="/ia_pages/" class="back-button">
-                        <img src="/ia_pages/logos/logo.png" alt="Logo" class="nav-logo" />
-                        <div class="back-text-container">
-                            <span class="back-icon">←</span>
-                            <span class="back-text">Inicio</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="nav-center">
-                    <h1>{categoryDescription.title}</h1>
-                </div>
-            </div>
-        </nav>
+        <CategoryNav title={categoryDescription.title} />
 
         <HeaderCarousel tools={validTools} />
 
         <div class="category-content">
             <div class="tools-grid">
-                {validTools.map(tool => (
-                    <AppCard 
-                        name={tool.name}
-                        url={tool.url}
-                        logo={tool.logo}
-                        description={tool.description}
-                    />
-                ))}
+                {
+                    validTools.map((tool) => (
+                        <AppCard
+                            name={tool.name}
+                            url={tool.url}
+                            logo={tool.logo}
+                            description={tool.description}
+                        />
+                    ))
+                }
             </div>
         </div>
     </main>
@@ -51,10 +39,12 @@ const validTools = videoTools.map(tool => ({
 <style>
     main {
         min-height: 100vh;
-        background: linear-gradient(135deg, 
-            rgba(26, 27, 38, 0.65), 
-            rgba(35, 36, 51, 0.65)
-        ), url('/images/background2.png');
+        background: linear-gradient(
+                135deg,
+                rgba(26, 27, 38, 0.65),
+                rgba(35, 36, 51, 0.65)
+            ),
+            url("/ia_pages/images/background2.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -157,4 +147,5 @@ const validTools = videoTools.map(tool => ({
             padding: 1rem;
         }
     }
-</style> 
+</style>
+

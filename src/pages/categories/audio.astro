@@ -1,47 +1,35 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import HeaderCarousel from '../../components/HeaderCarousel.astro';
-import AppCard from '../../components/AppCard.astro';
-import { audioTools, categoryDescription } from '../../data/audioTools';
+import Layout from "../../layouts/Layout.astro";
+import HeaderCarousel from "../../components/HeaderCarousel.astro";
+import AppCard from "../../components/AppCard.astro";
+import { audioTools, categoryDescription } from "../../data/audioTools";
+import CategoryNav from "../../components/CategoryNav.astro";
 
-const validTools = audioTools.map(tool => ({
+const validTools = audioTools.map((tool) => ({
     ...tool,
     description: tool.description || `Descubre ${tool.name}`,
-    logo: tool.logo || ''
+    logo: tool.logo || "",
 }));
 ---
 
 <Layout title={categoryDescription.title}>
     <main>
-        <nav class="category-nav">
-            <div class="nav-content">
-                <div class="nav-left">
-                    <a href="/" class="back-button">
-                        <img src="/logos/logo.png" alt="Logo" class="nav-logo" />
-                        <div class="back-text-container">
-                            <span class="back-icon">←</span>
-                            <span class="back-text">Inicio</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="nav-center">
-                    <h1>{categoryDescription.title}</h1>
-                </div>
-            </div>
-        </nav>
+        <CategoryNav title={categoryDescription.title} />
 
         <HeaderCarousel tools={validTools} />
 
         <div class="category-content">
             <div class="tools-grid">
-                {validTools.map(tool => (
-                    <AppCard 
-                        name={tool.name}
-                        url={tool.url}
-                        logo={tool.logo}
-                        description={tool.description}
-                    />
-                ))}
+                {
+                    validTools.map((tool) => (
+                        <AppCard
+                            name={tool.name}
+                            url={tool.url}
+                            logo={tool.logo}
+                            description={tool.description}
+                        />
+                    ))
+                }
             </div>
         </div>
     </main>
@@ -50,10 +38,12 @@ const validTools = audioTools.map(tool => ({
 <style>
     main {
         min-height: 100vh;
-        background: linear-gradient(135deg, 
-            rgba(26, 27, 38, 0.65), 
-            rgba(35, 36, 51, 0.65)
-        ), url('/images/background2.png');
+        background: linear-gradient(
+                135deg,
+                rgba(26, 27, 38, 0.65),
+                rgba(35, 36, 51, 0.65)
+            ),
+            url("/ia_pages/images/background2.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -156,4 +146,5 @@ const validTools = audioTools.map(tool => ({
             padding: 1rem;
         }
     }
-</style> 
+</style>
+
