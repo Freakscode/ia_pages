@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "mkdir -p dist && touch dist/.nojekyll && astro build",
+    "build": "node scripts/setupBuild.js && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

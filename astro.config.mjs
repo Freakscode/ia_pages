@@ -10,6 +10,7 @@ export default defineConfig({
 
   integrations: [react()],
 
-  site: 'https://freakscode.github.io/ia_pages',
-  base: '',
+  site: 'https://freakscode.github.io',
+  base: '/ia_pages',
+  output: 'static',
 });
