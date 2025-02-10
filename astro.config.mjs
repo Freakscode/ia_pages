@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro';
+import { defineConfig } from 'astro/config';
 
 import react from '@astrojs/react';
 
@@ -13,4 +13,7 @@ export default defineConfig({
   site: 'https://freakscode.github.io',
   base: '/ia_pages',
   output: 'static',
+  build: {
+    assets: 'assets'
+  }
 });
