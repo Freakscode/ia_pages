@@ -8,5 +8,8 @@ export default defineConfig({
     host: true
   },
 
-  integrations: [react()]
+  integrations: [react()],
+
+  site: 'https://freakscode.github.io',
+  base: '/ia_pages',
 });
