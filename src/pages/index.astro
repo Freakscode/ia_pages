@@ -8,7 +8,7 @@ import { categories } from '../data/categories';
 	<main>
 		<nav>
 			<div class="logo">
-				<img src="/logos/logo.png" alt="Logo" class="nav-logo" />
+				<img src="/ia_pages/logos/logo.png" alt="Logo" class="nav-logo" />
 			</div>
 		</nav>
 
@@ -52,7 +52,7 @@ import { categories } from '../data/categories';
 			</div>
 			<div class="categories-grid">
 				{categories.map(category => (
-					<a href={category.url} class="category-link">
+					<a href={`/ia_pages${category.url}`} class="category-link">
 						<Card 
 							title={category.title}
 							description={category.description}
@@ -70,7 +70,7 @@ import { categories } from '../data/categories';
 	main {
 		min-height: 100vh;
 		background: linear-gradient(135deg, rgba(26, 27, 38, 0.2), rgba(35, 36, 51, 0.2)), 
-					url('./images/backscreen.png');
+					url('/ia_pages/images/backscreen.png');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -150,7 +150,7 @@ import { categories } from '../data/categories';
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background: url('/images/grid.png') repeat;
+		background: url('/ia_pages/images/grid.png') repeat;
 		opacity: 0.1;
 		pointer-events: none;
 	}
