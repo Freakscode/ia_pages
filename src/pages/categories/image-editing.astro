@@ -3,6 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 import HeaderCarousel from '../../components/HeaderCarousel.astro';
 import AppCard from '../../components/AppCard.astro';
 import { imageEditingTools } from '../../data/imageEditingTools';
+
+const validTools = imageEditingTools.map(tool => ({
+    ...tool,
+    description: tool.description || `Descubre ${tool.name}`,
+    logo: tool.logo || ''
+}));
 ---
 
 <Layout title="Creación Y Edición De Imágenes">
