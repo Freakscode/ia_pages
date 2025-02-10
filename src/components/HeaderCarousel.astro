@@ -1,0 +1,167 @@
+---
+import type { Tool } from '../types/Tool';
+import AppCard from './AppCard.astro';
+
+interface Props {
+    tools: Tool[];
+}
+
+const { tools } = Astro.props;
+---
+<div class="header-carousel">
+    <div class="carousel-inner">
+        {tools.map((tool, index) => (
+            <div class={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                <div class="carousel-container">
+                    <AppCard 
+                        name={tool.name}
+                        url={tool.url}
+                        logo={tool.logo}
+                        description={tool.description}
+                        isCarousel={true}
+                    />
+                </div>
+            </div>
+        ))}
+    </div>
+    <button class="carousel-button prev">‹</button>
+    <button class="carousel-button next">›</button>
+</div>
+
+<script is:inline>
+  const carousel = document.querySelector('.carousel-inner');
+  let currentIndex = 0;
+  const items = document.querySelectorAll('.carousel-item');
+  const totalItems = items.length;
+  let isTransitioning = false;
+
+  function updateActiveSlide(index) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    items.forEach((item, i) => {
+      item.style.opacity = i === index ? '1' : '0';
+      item.style.visibility = i === index ? 'visible' : 'hidden';
+    });
+
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 600);
+  }
+
+  function showSlide(index) {
+    if (isTransitioning) return;
+    
+    if (index < 0) {
+      currentIndex = totalItems - 1;
+    } else if (index >= totalItems) {
+      currentIndex = 0;
+    } else {
+      currentIndex = index;
+    }
+    
+    updateActiveSlide(currentIndex);
+  }
+
+  // Event listeners para los botones
+  document.querySelector('.carousel-button.prev').addEventListener('click', () => {
+    showSlide(currentIndex - 1);
+  });
+
+  document.querySelector('.carousel-button.next').addEventListener('click', () => {
+    showSlide(currentIndex + 1);
+  });
+
+  // Cambio automático cada 5 segundos
+  const autoplayInterval = setInterval(() => {
+    showSlide(currentIndex + 1);
+  }, 5000);
+
+  // Detener autoplay cuando el usuario interactúa
+  document.querySelector('.header-carousel').addEventListener('mouseenter', () => {
+    clearInterval(autoplayInterval);
+  });
+</script>
+
+<style>
+    .header-carousel {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 2rem;
+    }
+
+    .carousel-inner {
+        position: relative;
+        height: 300px;
+    }
+
+    .carousel-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    .carousel-item.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .carousel-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(110, 75, 255, 0.1);
+        border: 1px solid rgba(110, 75, 255, 0.3);
+        color: white;
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 5;
+    }
+
+    .carousel-button:hover {
+        background: rgba(110, 75, 255, 0.2);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-button.prev { left: 2rem; }
+    .carousel-button.next { right: 2rem; }
+
+    @media (max-width: 768px) {
+        .carousel-inner {
+            height: auto;
+            min-height: 400px;
+        }
+        
+        .header-carousel {
+            padding: 1rem;
+        }
+        
+        .carousel-button {
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+        }
+        
+        .carousel-button.prev { left: 0.5rem; }
+        .carousel-button.next { right: 0.5rem; }
+    }
+</style>

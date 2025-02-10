@@ -2,10 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import HeaderCarousel from '../../components/HeaderCarousel.astro';
 import AppCard from '../../components/AppCard.astro';
-import { animationTools, categoryDescription } from '../../data/animationTools';
+import { designTools, categoryDescription } from '../../data/designTools';
 
-// Asegurémonos de que las herramientas tengan todos los campos necesarios
-const validTools = animationTools.map(tool => ({
+const validTools = designTools.map(tool => ({
     ...tool,
     description: tool.description || `Descubre ${tool.name}`,
     logo: tool.logo || ''
@@ -22,7 +21,6 @@ const validTools = animationTools.map(tool => ({
                         <div class="back-text-container">
                             <span class="back-icon">←</span>
                             <span class="back-text">Inicio</span>
-
                         </div>
                     </a>
                 </div>
@@ -78,53 +76,43 @@ const validTools = animationTools.map(tool => ({
     }
 
     .nav-content {
+        max-width: 1400px;
+        margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        max-width: 1400px;
-        margin: 0 auto;
-        width: 100%;
     }
 
     .nav-left {
-        flex: 0 0 auto;
-    }
-
-    .nav-center {
-        flex: 1;
-        text-align: center;
+        display: flex;
+        align-items: center;
     }
 
     .back-button {
         display: flex;
         align-items: center;
         gap: 1rem;
-        padding: 0.5rem 1rem;
-        background: rgba(110, 75, 255, 0.1);
-        border: 1px solid rgba(110, 75, 255, 0.2);
-        border-radius: 12px;
-        transition: all 0.3s ease;
         text-decoration: none;
         color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
     }
 
     .back-button:hover {
         background: rgba(110, 75, 255, 0.2);
-        border-color: rgba(110, 75, 255, 0.4);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 20px rgba(110, 75, 255, 0.15);
     }
 
     .nav-logo {
         height: 32px;
         width: auto;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     }
 
-    .category-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 2rem;
+    .back-text-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     .tools-grid {
@@ -165,10 +153,7 @@ const validTools = animationTools.map(tool => ({
         .tools-grid {
             grid-template-columns: 1fr;
             gap: 1.5rem;
-        }
-
-        .category-content {
             padding: 1rem;
         }
     }
-</style>
+</style> 

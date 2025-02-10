@@ -1,0 +1,195 @@
+---
+interface Props {
+  logo?: string;
+  name: string;
+  description: string;
+  url: string;
+  isCarousel?: boolean;
+}
+
+const { logo, name, description, url, isCarousel = false } = Astro.props;
+
+// Mejoramos la lógica para obtener el logo
+const getFallbackLogo = (url: string) => {
+    try {
+        const hostname = new URL(url).hostname;
+        return `https://logo.clearbit.com/${hostname}`;
+    } catch {
+        // Si la URL no es válida, usamos la primera letra del nombre
+        return '';
+    }
+};
+
+const computedLogo = logo || getFallbackLogo(url);
+---
+<div class={`app-card ${isCarousel ? 'carousel-card' : ''}`}>
+  <a href={url} target="_blank" rel="noopener">
+    <div class="app-card-header">
+      {computedLogo ? (
+        <img 
+          src={computedLogo} 
+          alt={`${name} logo`}
+          onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML=`<div class='default-logo'>${this.alt[0]}</div>`"
+        />
+      ) : (
+        <div class="default-logo">{name[0]}</div>
+      )}
+    </div>
+    <div class="app-card-body">
+      <h3>{name}</h3>
+      <p>{description}</p>
+    </div>
+  </a>
+</div>
+
+<style>
+  /* Estilos base para la card normal */
+  .app-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .app-card a {
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+  }
+  
+  .app-card-header img {
+    max-width: 80%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  
+  .app-card-body {
+    flex: 1;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.1));
+  }
+  
+  .app-card-body h3 {
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .app-card-body p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+  }
+  
+  .app-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(110, 75, 255, 0.15);
+    border-color: rgba(110, 75, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Estilos específicos para el modo carrusel */
+  .carousel-card {
+    display: flex;
+    height: 300px;
+    max-width: none;
+    aspect-ratio: auto;
+  }
+  
+  .carousel-card a {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  .carousel-card .app-card-header {
+    flex: 0 0 40%;
+    height: 100%;
+    margin: 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    box-sizing: border-box; /* Asegura que el padding no afecte el centrado */
+  }
+  
+  .carousel-card .app-card-body {
+    flex: 1;
+    padding: 2rem;
+    text-align: center; /* Centrar el texto horizontalmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar el texto verticalmente */
+  }
+
+  .carousel-card .app-card-body h3 {
+    font-size: 1.5rem; /* Aumentar el tamaño del texto del título */
+    margin: 0 0 1rem 0;
+    color: white;
+    font-weight: 600;
+  }
+
+  .carousel-card .app-card-body p {
+    font-size: 1.1rem; /* Aumentar el tamaño del texto del párrafo */
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 768px) {
+    .carousel-card {
+      height: auto;
+    }
+    
+    .carousel-card a {
+      flex-direction: column;
+    }
+    
+    .carousel-card .app-card-header {
+      flex: none;
+      height: 200px;
+    }
+  }
+
+  .default-logo {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(110, 75, 255, 0.2);
+    border-radius: 50%;
+    font-size: 2rem;
+    color: white;
+  }
+
+  .carousel-card .default-logo {
+    width: 120px;
+    height: 120px;
+    font-size: 3rem;
+  }
+</style> 
