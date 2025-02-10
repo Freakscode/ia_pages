@@ -66,10 +66,10 @@ export const categories: Category[] = [
     },
     {
         title: "Tareas Multipropósito",
-        description: "Soluciones Versátiles",
-        icon: "🔄",
-        cardClass: "card-8",
-        url: "/categories/multi",
+        description: "Herramientas versátiles para diversas tareas",
+        icon: "🛠️",
+        cardClass: "multi",
+        url: "/categories/multi/",
         logo: "/images/logos/multi.png"
     }
 ]; 

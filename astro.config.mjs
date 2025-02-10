@@ -12,8 +12,4 @@ export default defineConfig({
 
   site: 'https://freakscode.github.io',
   base: '/ia_pages',
-  output: 'static',
-  build: {
-    assets: 'assets'
-  }
 });
